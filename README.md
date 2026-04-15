@@ -1,4 +1,4 @@
-Shopping Cart Activity
+"Shopping Cart Activity"
 
 -> Initial Coding:
 
@@ -14,5 +14,8 @@ Shopping Cart Activity
 
  AI Prompts used:
  - Identify errors and fix the flow of the code.
+    I used AI to identify and correct errors in my code. For example, I initially misused `int.TryParse()`, which prevented proper input validation from working as intended. In addition, I relied on AI to improve the overall flow of my program, as it was previously messy and unorganized. It also helped me add clear comments, making it easier to understand the purpose of each section of the code.
  - Fix errors
- - Paraphrase
+   There were errors in my code that I could not fully understand, locate, or fix on my own, so I used AI to help identify and resolve them.
+ - Paraphrase and fix text.
+   While working on the documentation, I used paraphrasing to make my explanations clearer and more coherent. This helped ensure that the content was well-structured, easy to understand, and suitable for evaluation.
