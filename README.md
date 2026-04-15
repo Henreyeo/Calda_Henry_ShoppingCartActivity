@@ -1,6 +1,10 @@
 
- ༘ ˚⋆🛍️ ｡⋆ 🛒 Shopping Cart Activity 🛒 ⋆ 𖦹 🛍️ .✧˚  
----
+  #  ༘ ˚⋆🛍️ ｡⋆ 🛒 Shopping Cart Activity 🛒 ⋆ 𖦹 🛍️ .✧˚  
+
+This Shopping Cart System is a simple C# console application that simulates a café ordering process. It allows users to view a menu, select items, input quantities, and add them to a cart.
+
+The program uses a `Product` class to organize item details and includes basic features such as input validation, stock checking, duplicate item handling, and discount calculation. It was developed to apply fundamental programming concepts and to create a functional and easy-to-understand ordering system.
+
 ## Initial Coding
 To begin the project, I reviewed the requirements and planned the overall structure of the program. I implemented a `Product` class with its corresponding fields and methods:
 ````markdown
