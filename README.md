@@ -1,21 +1,140 @@
-"Shopping Cart Activity"
 
--> Initial Coding:
+ ༘ ˚⋆🛍️ ｡⋆ 🛒 Shopping Cart Activity 🛒 ⋆ 𖦹 🛍️ .✧˚  
+---
+## Initial Coding
+To begin the project, I reviewed the requirements and planned the overall structure of the program. I implemented a `Product` class with its corresponding fields and methods:
+````markdown
 
-  To start this project, I started by reviewing the project requirements and planning the structure of my program. I created the Product class with its fields and methods like DisplayProduct(), GetItemTotal(), HasEnoughStock(), and DeductStock(). Then I set up the store menu using an array of products and began coding the main flow, including user input with int.TryParse(), basic validations, and adding items to a cart with duplicate handling. My focus for this day was to get the core structure working and make sure everything follows the required logic.
 
--> Code Improvement and Debugging:
 
- Following this, I created a concept for the type of shop I wanted to build, and I decided on a café setup. After that, I reviewed and refined my rough code with the help of ChatGPT to make it more organized, functional, and easier to understand. I specifically prompted ChatGPT to help format the code properly and identify any possible errors or missing parts. During this process, I discovered several issues in my initial version, such as the program not handling alphabet or non-numeric inputs when selecting items from the menu, which required implementing `int.TryParse()` for proper validation. I also realized that I had missed important requirements like setting a maximum cart capacity and applying the discount condition for totals above a certain amount. These improvements helped make my code more complete, user-friendly, and aligned with the given instructions.
 
--> Finalizing and Debugging pt.2:
+```csharp
+class Product
+{
+    public int Id;
+    public string Name;
+    public double Price;
+    public int RemainingStock;
 
- I updated the menu by adding more desserts and drinks to make the café concept more complete. After that, I used AI during the final debugging phase to fix remaining issues, improve the readability of the code, and avoid spaghetti-like structure. I then created a verbose flowchart to clearly represent the program’s process. Finally, I conducted a last round of testing to ensure everything was working correctly before submitting the project.
+    public void DisplayProduct() { }
+    public double GetItemTotal(int quantity) { return Price * quantity; }
+    public bool HasEnoughStock(int quantity) { return quantity <= RemainingStock; }
+    public void DeductStock(int quantity) { RemainingStock -= quantity; }
+}
+````
 
- AI Prompts used:
- - Identify errors and fix the flow of the code.
-    I used AI to identify and correct errors in my code. For example, I initially misused `int.TryParse()`, which prevented proper input validation from working as intended. In addition, I relied on AI to improve the overall flow of my program, as it was previously messy and unorganized. It also helped me add clear comments, making it easier to understand the purpose of each section of the code.
- - Fix errors
-   There were errors in my code that I could not fully understand, locate, or fix on my own, so I used AI to help identify and resolve them.
- - Paraphrase and fix text.
-   While working on the documentation, I used paraphrasing to make my explanations clearer and more coherent. This helped ensure that the content was well-structured, easy to understand, and suitable for evaluation.
+After defining the class, I created the store menu using an array of products:
+
+```csharp
+Product[] products = new Product[]
+{
+    new Product { Id = 1, Name = "Spanish Latte", Price = 120, RemainingStock = 10 },
+    new Product { Id = 2, Name = "Matcha Latte", Price = 120, RemainingStock = 15 }
+};
+```
+
+I then began implementing the main program flow, including user input handling using `int.TryParse()`:
+
+```csharp
+int productChoice;
+if (!int.TryParse(Console.ReadLine(), out productChoice))
+{
+    Console.WriteLine("Invalid input! Please enter a number.");
+}
+```
+
+Basic validation and cart functionality were also added, including handling duplicate items:
+
+```csharp
+int index = cart.FindIndex(p => p.Id == selected.Id);
+
+if (index != -1)
+{
+    quantities[index] += qty;
+}
+else
+{
+    cart.Add(selected);
+    quantities.Add(qty);
+}
+```
+
+The main goal at this stage was to establish a working structure that follows the required program logic.
+
+---
+
+##  Code Improvement and Debugging
+
+After completing the initial version, I decided to develop a **café-themed shopping system**. I reviewed and refined my code with the assistance of AI to improve its structure, readability, and functionality.
+
+One major issue I encountered was improper input handling. The program initially failed to handle non-numeric inputs, which was resolved by correctly implementing:
+
+```csharp
+if (!int.TryParse(Console.ReadLine(), out productChoice))
+{
+    Console.WriteLine("Invalid input! Please enter a number.");
+    continue;
+}
+```
+
+I also identified missing requirements, such as implementing a cart limit:
+
+```csharp
+const int CART_LIMIT = 10;
+
+if (cart.Count >= CART_LIMIT)
+{
+    Console.WriteLine("Cart is full.");
+    break;
+}
+```
+
+Additionally, I implemented a discount feature for large purchases:
+
+```csharp
+double discount = 0;
+
+if (grandTotal >= 5000)
+{
+    discount = grandTotal * 0.10;
+}
+```
+
+These improvements enhanced the program’s reliability, usability, and alignment with the given instructions.
+
+---
+
+##  Finalizing and Debugging (Phase 2)
+
+In the final phase, I expanded the menu by adding more desserts and beverages to match the café concept better.
+
+I then performed final debugging and code refinement to improve readability and avoid a disorganized or “spaghetti code” structure. This included organizing logic and ensuring consistent formatting.
+
+Additionally, I created a **detailed flowchart** to visually represent the program’s logic and processes.
+
+Finally, I conducted comprehensive testing to ensure all features were working correctly before submission.
+
+---
+
+##  AI Prompts Used:
+
+###  "Identify errors and fix code flow."
+
+AI was used to detect and correct errors in the program. One example was the incorrect use of `int.TryParse()`, which initially caused input validation issues. AI also helped restructure the code for better readability and added comments to clarify each section.
+
+---
+
+###  "Fix errors."
+
+Some errors were difficult to understand and locate independently. AI assistance helped identify and resolve these issues efficiently.
+
+---
+
+###  "Paraphrase and improve documentation."
+
+During the documentation process, paraphrasing was used to improve clarity and coherence. This ensured that the explanations were well-structured, easy to understand, and appropriate for academic evaluation.
+
+---
+
+
+
