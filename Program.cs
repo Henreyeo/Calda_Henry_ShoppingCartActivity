@@ -29,5 +29,21 @@ class Program
         {
             p.DisplayProduct();
         }
+
+        Console.Write("\nEnter product number: ");
+
+        if (!int.TryParse(Console.ReadLine(), out int choice))
+        {
+            Console.WriteLine("Invalid input.");
+            return;
+        }
+
+        if (choice < 1 || choice > products.Length)
+        {
+            Console.WriteLine("Invalid product selection.");
+            return;
+        }
+
+        Console.WriteLine($"You selected: {products[choice - 1].Name}");
     }
 }
