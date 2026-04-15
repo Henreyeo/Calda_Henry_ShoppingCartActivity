@@ -1,10 +1,16 @@
 #  ༘ ˚⋆🛍️ ｡⋆ 🛒 Shopping Cart Activity 🛒 ⋆ 𖦹 🛍️ .✧˚  
 
+![C#](https://img.shields.io/badge/Language-C%23-blue?logo=csharp)
+![.NET](https://img.shields.io/badge/Framework-.NET-purple?logo=dotnet)
+![Status](https://img.shields.io/badge/Status-Completed-success)
+![Project Type](https://img.shields.io/badge/Type-Console%20Application-orange)
+
 This Shopping Cart System is a simple C# console application that simulates a café ordering process. It allows users to view a menu, select items, input quantities, and add them to a cart.
 
 The program uses a `Product` class to organize item details and includes basic features such as input validation, stock checking, duplicate item handling, cart limiting, and discount calculation. It was developed to apply fundamental programming concepts and to create a functional and easy-to-understand ordering system.
 
 ---
+
 
 ## Initial Coding
 
@@ -82,6 +88,12 @@ if (grandTotal >= 5000)
 I updated the menu by adding more desserts and drinks to make the café concept more complete. After that, I used AI during the final debugging phase to fix remaining issues, improve the readability of the code, and avoid spaghetti-like structure. I then created a verbose flowchart to clearly represent the program’s process. Finally, I conducted a last round of testing to ensure everything was working correctly before submitting the project.
 
 ---
+
+## Conclusion
+
+This Shopping Cart System was developed to apply key programming concepts such as object-oriented programming, input validation, loops, arrays, and list management in a practical console-based application. It successfully simulates a café ordering system where users can select products, manage quantities, and generate a final receipt with discount computation.
+
+Through this activity, the program was improved through planning, debugging, and refinement, which helped enhance its structure, functionality, and usability. Overall, it demonstrates how core programming principles can be combined to build a working and organized system.
 
 ## AI Prompts used:
 
