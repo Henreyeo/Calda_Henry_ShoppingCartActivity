@@ -1,4 +1,4 @@
-#  ༘ ˚⋆🛍️ ｡⋆ 🛒 Shopping Cart Activity 🛒 ⋆ 𖦹 🛍️ .✧˚  
+#  ༘ ˚⋆🛍️ ｡⋆ 🛒 Shopping Cart Activity (Enhanced) 🛒 ⋆ 𖦹 🛍️ .✧˚  
 
 ![C#](https://img.shields.io/badge/Language-C%23-blue?logo=csharp)
 ![.NET](https://img.shields.io/badge/Framework-.NET-purple?logo=dotnet)
@@ -105,3 +105,68 @@ Through this activity, the program was improved through planning, debugging, and
 
 - **Paraphrase and fix text.**  
   While working on the documentation, I used paraphrasing to make my explanations clearer and more coherent. This helped ensure that the content was well-structured, easy to understand, and suitable for evaluation.
+
+  
+---
+
+# 🧠 Part 2 Features
+
+## Product Features
+- View all products  
+- Search products by name  
+- Filter products by category  
+
+## Cart System
+- Add items to cart  
+- Update quantity  
+- Remove items  
+- Clear cart  
+- Prevent duplicate items  
+- Stock validation system  
+
+## Checkout System
+- Auto receipt generation  
+- Discount system (10% if ₱5000+)  
+- Payment validation  
+- Change computation  
+
+## Order History
+- Stores past transactions  
+- Displays receipt number and date  
+- Tracks total spent per order  
+
+## Stock System
+- Automatic stock deduction  
+- Stock restoration when removing items  
+- Low stock alerts (≤ 5 items)  
+
+---
+
+## 🤖 AI Assistance Used For:
+- Fix logic errors in cart and stock handling  
+- Improving program structure and readability  
+- Enhancing input validation  
+- Debugging checkout and receipt system  
+- Expanding and organizing README documentation  
+
+---
+
+# Commit History
+
+## 1. Initial Commit – Basic System
+- Product class implementation  
+- Basic menu system  
+- Simple cart functionality  
+
+## 2. Input Validation + Discount System
+- Added `int.TryParse()` validation  
+- Implemented discount logic  
+- Improved stock checking  
+
+## 3. Part 2 System Upgrade
+- Added search and category filtering  
+- Added cart management system  
+- Added order history tracking  
+- Expanded product list  
+
+---
