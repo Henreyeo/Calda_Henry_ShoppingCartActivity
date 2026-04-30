@@ -1,4 +1,4 @@
-#  ༘ ˚⋆🛍️ ｡⋆ 🛒 Shopping Cart Activity (Enhanced) 🛒 ⋆ 𖦹 🛍️ .✧˚  
+#  🛒 Shopping Cart Activity (Enhanced) 🛒  
 
 ![C#](https://img.shields.io/badge/Language-C%23-blue?logo=csharp)
 ![.NET](https://img.shields.io/badge/Framework-.NET-purple?logo=dotnet)
