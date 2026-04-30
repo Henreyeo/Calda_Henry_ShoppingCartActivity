@@ -29,11 +29,19 @@ class Program
     {
         Product[] products =
         {
-            new Product { Id=1, Name="Spanish Latte", Category="Drinks", Price=120, RemainingStock=10 },
-            new Product { Id=2, Name="Matcha Latte", Category="Drinks", Price=120, RemainingStock=15 },
-            new Product { Id=3, Name="Ube Latte", Category="Drinks", Price=120, RemainingStock=15 },
-            new Product { Id=4, Name="Tiramisu Cake", Category="Dessert", Price=150, RemainingStock=8 },
-            new Product { Id=5, Name="Cookie", Category="Dessert", Price=30, RemainingStock=30 }
+         
+    new Product { Id = 1, Name = "Spanish Latte", Category = "Drinks", Price = 120, RemainingStock = 10 },
+    new Product { Id = 2, Name = "Matcha Latte", Category = "Drinks", Price = 120, RemainingStock = 15 },
+    new Product { Id = 3, Name = "Ube Latte", Category = "Drinks", Price = 120, RemainingStock = 15 },
+    new Product { Id = 4, Name = "Tiramisu Cake", Category = "Dessert", Price = 150, RemainingStock = 8 },
+    new Product { Id = 5, Name = "Chocolate Chip Cookie", Category = "Dessert", Price = 30, RemainingStock = 30 },
+    new Product { Id = 6, Name = "Macaron", Category = "Dessert", Price = 30, RemainingStock = 40 },
+    new Product { Id = 7, Name = "Croissant", Category = "Dessert", Price = 50, RemainingStock = 35 },
+    new Product { Id = 8, Name = "Loaded Fries", Category = "Savory", Price = 70, RemainingStock = 30 },
+    new Product { Id = 9, Name = "Breakfast Sandwich", Category = "Savory", Price = 70, RemainingStock = 30 },
+    new Product { Id = 10, Name = "Lemonade", Category = "Drinks", Price = 70, RemainingStock = 20 },
+    new Product { Id = 11, Name = "Crème Brûlée", Category = "Dessert", Price = 70, RemainingStock = 15 },
+    new Product { Id = 12, Name = "Soufflé", Category = "Dessert", Price = 50, RemainingStock = 25 }
         };
 
         const int LIMIT = 10;
