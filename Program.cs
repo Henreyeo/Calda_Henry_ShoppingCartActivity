@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 
 class Product
 {
@@ -48,13 +47,13 @@ class Program
             new Product { Id = 10, Name = "Lemonade", Price = 70, RemainingStock = 20 },
             new Product { Id = 11, Name = "Crème Brûlée", Price = 70, RemainingStock = 15 },
             new Product { Id = 12, Name = "Soufflé", Price = 50, RemainingStock = 25 }
-
         };
 
-        // CART (using List but with limit)
-        List<Product> cart = new List<Product>();
-        List<int> quantities = new List<int>();
+        // CART 
         const int CART_LIMIT = 10;
+        Product[] cart = new Product[CART_LIMIT];
+        int[] quantities = new int[CART_LIMIT];
+        int cartCount = 0;
 
         bool continueShopping = true;
 
@@ -67,7 +66,7 @@ class Program
             }
 
             // CHECK CART LIMIT
-            if (cart.Count >= CART_LIMIT)
+            if (cartCount >= CART_LIMIT)
             {
                 Console.WriteLine("Cart is full.");
                 break;
@@ -115,7 +114,15 @@ class Program
             }
 
             // CHECK DUPLICATE
-            int index = cart.FindIndex(p => p.Id == selected.Id);
+            int index = -1;
+            for (int i = 0; i < cartCount; i++)
+            {
+                if (cart[i].Id == selected.Id)
+                {
+                    index = i;
+                    break;
+                }
+            }
 
             if (index != -1)
             {
@@ -124,22 +131,28 @@ class Program
             }
             else
             {
-                cart.Add(selected);
-                quantities.Add(qty);
+                cart[cartCount] = selected;
+                quantities[cartCount] = qty;
+                cartCount++;
                 Console.WriteLine("Item added to cart.");
             }
 
             // DEDUCT STOCK
             selected.DeductStock(qty);
 
-            // CONTINUE SHOPPING VALIDATION
-            Console.Write("Add more items? (Y/N): ");
-            string choice = Console.ReadLine().ToUpper();
-
-            if (choice != "Y" && choice != "N")
+            // CONTINUE SHOPPING VALIDATION (FIXED)
+            string choice;
+            while (true)
             {
-                Console.WriteLine("Invalid choice. Assuming YES.");
-                continue;
+                Console.Write("Add more items? (Y/N): ");
+                choice = Console.ReadLine().ToUpper();
+
+                if (choice == "Y" || choice == "N")
+                {
+                    break;
+                }
+
+                Console.WriteLine("Invalid input. Please enter Y or N.");
             }
 
             if (choice == "N")
@@ -152,7 +165,7 @@ class Program
         Console.WriteLine("\n=== RECEIPT ===");
         double grandTotal = 0;
 
-        for (int i = 0; i < cart.Count; i++)
+        for (int i = 0; i < cartCount; i++)
         {
             double subtotal = cart[i].GetItemTotal(quantities[i]);
             Console.WriteLine($"{cart[i].Name} x{quantities[i]} = ₱{subtotal:F2}");
