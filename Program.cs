@@ -2,12 +2,14 @@ using System;
 
 class Product
 {
+    // Private fields
     private int id;
     private string name;
     private string category;
     private double price;
     private int remainingStock;
 
+    // Getters and Setters
     public int Id
     {
         get { return id; }
@@ -46,10 +48,12 @@ class Product
 
 class Order
 {
+    // Private fields
     private int receiptNo;
     private DateTime date;
     private double finalTotal;
 
+    // Getters and Setters
     public int ReceiptNo
     {
         get { return receiptNo; }
@@ -92,7 +96,6 @@ class Program
         };
 
         const int LIMIT = 10;
-
         Product[] cart = new Product[LIMIT];
         int[] qty = new int[LIMIT];
         int count = 0;
@@ -115,8 +118,7 @@ class Program
             switch (choice)
             {
                 case 1:
-                    foreach (var p in products)
-                        p.Display();
+                    foreach (var p in products) p.Display();
                     break;
 
                 case 2:
@@ -124,24 +126,18 @@ class Program
                     string search = Console.ReadLine().ToLower();
 
                     foreach (var p in products)
-                    {
                         if (p.Name.ToLower().Contains(search))
                             p.Display();
-                    }
                     break;
 
                 case 3:
                     Console.WriteLine("1. Drinks\n2. Dessert");
-
                     int catChoice = ReadInt("Choose category: ");
-
                     string category = catChoice == 1 ? "Drinks" : "Dessert";
 
                     foreach (var p in products)
-                    {
                         if (p.Category == category)
                             p.Display();
-                    }
                     break;
 
                 case 4:
@@ -165,7 +161,8 @@ class Program
             }
         }
     }
-        static void ManageCart(Product[] products, Product[] cart, int[] qty,
+
+    static void ManageCart(Product[] products, Product[] cart, int[] qty,
         ref int count, Order[] history, ref int historyCount)
     {
         while (true)
@@ -184,11 +181,9 @@ class Program
             switch (choice)
             {
                 case 1:
-                    foreach (var p in products)
-                        p.Display();
+                    foreach (var p in products) p.Display();
 
                     int id = ReadInt("Product #: ");
-
                     Product selected = products[id - 1];
 
                     if (selected.RemainingStock == 0)
@@ -229,9 +224,7 @@ class Program
                     int u = ReadInt("Item #: ") - 1;
 
                     int newQty = ReadInt("New quantity: ");
-
                     int oldQty = qty[u];
-
                     int diff = newQty - oldQty;
 
                     if (diff > 0 && diff > cart[u].RemainingStock)
@@ -241,7 +234,6 @@ class Program
                     }
 
                     cart[u].RemainingStock -= diff;
-
                     qty[u] = newQty;
                     break;
 
@@ -264,7 +256,6 @@ class Program
                         cart[i].RemainingStock += qty[i];
 
                     count = 0;
-
                     Console.WriteLine("Cart cleared.");
                     break;
 
@@ -329,7 +320,6 @@ class Program
         Console.WriteLine($"Change: ₱{payment - finalTotal:F2}");
 
         Console.WriteLine($"\nReceipt No: {receiptCounter++:0000}");
-
         Console.WriteLine($"Date: {DateTime.Now:MMMM dd, yyyy hh:mm tt}");
 
         ShowLowStock(products);
@@ -353,10 +343,8 @@ class Program
     static int FindItem(Product[] cart, int count, int id)
     {
         for (int i = 0; i < count; i++)
-        {
             if (cart[i].Id == id)
                 return i;
-        }
 
         return -1;
     }
