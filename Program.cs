@@ -33,7 +33,6 @@ class Product
         get { return price; }
         set { price = value; }
     }
-}
 
     public int RemainingStock
     {
@@ -97,6 +96,7 @@ class Program
         };
 
         const int LIMIT = 10;
+
         Product[] cart = new Product[LIMIT];
         int[] qty = new int[LIMIT];
         int count = 0;
@@ -119,7 +119,8 @@ class Program
             switch (choice)
             {
                 case 1:
-                    foreach (var p in products) p.Display();
+                    foreach (var p in products)
+                        p.Display();
                     break;
 
                 case 2:
@@ -127,18 +128,24 @@ class Program
                     string search = Console.ReadLine().ToLower();
 
                     foreach (var p in products)
+                    {
                         if (p.Name.ToLower().Contains(search))
                             p.Display();
+                    }
                     break;
 
                 case 3:
                     Console.WriteLine("1. Drinks\n2. Dessert");
+
                     int catChoice = ReadInt("Choose category: ");
+
                     string category = catChoice == 1 ? "Drinks" : "Dessert";
 
                     foreach (var p in products)
+                    {
                         if (p.Category == category)
                             p.Display();
+                    }
                     break;
 
                 case 4:
@@ -182,9 +189,17 @@ class Program
             switch (choice)
             {
                 case 1:
-                    foreach (var p in products) p.Display();
+                    foreach (var p in products)
+                        p.Display();
 
                     int id = ReadInt("Product #: ");
+
+                    if (id < 1 || id > products.Length)
+                    {
+                        Console.WriteLine("Invalid product number.");
+                        break;
+                    }
+
                     Product selected = products[id - 1];
 
                     if (selected.RemainingStock == 0)
@@ -204,7 +219,9 @@ class Program
                     int index = FindItem(cart, count, selected.Id);
 
                     if (index != -1)
+                    {
                         qty[index] += q;
+                    }
                     else
                     {
                         cart[count] = selected;
@@ -217,15 +234,38 @@ class Program
                     break;
 
                 case 2:
-                    for (int i = 0; i < count; i++)
-                        Console.WriteLine($"{i + 1}. {cart[i].Name} x{qty[i]}");
+                    if (count == 0)
+                    {
+                        Console.WriteLine("Cart is empty.");
+                    }
+                    else
+                    {
+                        for (int i = 0; i < count; i++)
+                        {
+                            Console.WriteLine($"{i + 1}. {cart[i].Name} x{qty[i]}");
+                        }
+                    }
                     break;
 
                 case 3:
+                    if (count == 0)
+                    {
+                        Console.WriteLine("Cart is empty.");
+                        break;
+                    }
+
                     int u = ReadInt("Item #: ") - 1;
 
+                    if (u < 0 || u >= count)
+                    {
+                        Console.WriteLine("Invalid item number.");
+                        break;
+                    }
+
                     int newQty = ReadInt("New quantity: ");
+
                     int oldQty = qty[u];
+
                     int diff = newQty - oldQty;
 
                     if (diff > 0 && diff > cart[u].RemainingStock)
@@ -235,11 +275,24 @@ class Program
                     }
 
                     cart[u].RemainingStock -= diff;
+
                     qty[u] = newQty;
                     break;
 
                 case 4:
+                    if (count == 0)
+                    {
+                        Console.WriteLine("Cart is empty.");
+                        break;
+                    }
+
                     int r = ReadInt("Remove item #: ") - 1;
+
+                    if (r < 0 || r >= count)
+                    {
+                        Console.WriteLine("Invalid item number.");
+                        break;
+                    }
 
                     cart[r].RemainingStock += qty[r];
 
@@ -254,13 +307,22 @@ class Program
 
                 case 5:
                     for (int i = 0; i < count; i++)
+                    {
                         cart[i].RemainingStock += qty[i];
+                    }
 
                     count = 0;
+
                     Console.WriteLine("Cart cleared.");
                     break;
 
                 case 6:
+                    if (count == 0)
+                    {
+                        Console.WriteLine("Cart is empty.");
+                        break;
+                    }
+
                     double finalTotal;
 
                     Checkout(cart, qty, count, products, out finalTotal);
@@ -296,7 +358,6 @@ class Program
 
             total += sub;
         }
-    }
 
         double discount = total >= 5000 ? total * 0.10 : 0;
 
@@ -314,7 +375,9 @@ class Program
 
             if (double.TryParse(Console.ReadLine(), out payment) &&
                 payment >= finalTotal)
+            {
                 break;
+            }
 
             Console.WriteLine("Invalid or insufficient payment.");
         }
@@ -336,7 +399,9 @@ class Program
             Console.Write(message);
 
             if (int.TryParse(Console.ReadLine(), out value))
+            {
                 return value;
+            }
 
             Console.WriteLine("Invalid input. Enter a number.");
         }
@@ -345,8 +410,12 @@ class Program
     static int FindItem(Product[] cart, int count, int id)
     {
         for (int i = 0; i < count; i++)
+        {
             if (cart[i].Id == id)
+            {
                 return i;
+            }
+        }
 
         return -1;
     }
@@ -367,6 +436,8 @@ class Program
         }
 
         if (!found)
+        {
             Console.WriteLine("No low stock items.");
+        }
     }
 }
