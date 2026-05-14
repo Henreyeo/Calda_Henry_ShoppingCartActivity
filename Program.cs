@@ -2,11 +2,43 @@ using System;
 
 class Product
 {
-    public int Id;
-    public string Name;
-    public string Category;
-    public double Price;
-    public int RemainingStock;
+    // Private fields
+    private int id;
+    private string name;
+    private string category;
+    private double price;
+    private int remainingStock;
+
+    // Getters and Setters
+    public int Id
+    {
+        get { return id; }
+        set { id = value; }
+    }
+
+    public string Name
+    {
+        get { return name; }
+        set { name = value; }
+    }
+
+    public string Category
+    {
+        get { return category; }
+        set { category = value; }
+    }
+
+    public double Price
+    {
+        get { return price; }
+        set { price = value; }
+    }
+
+    public int RemainingStock
+    {
+        get { return remainingStock; }
+        set { remainingStock = value; }
+    }
 
     public void Display()
     {
@@ -16,9 +48,29 @@ class Product
 
 class Order
 {
-    public int ReceiptNo;
-    public DateTime Date;
-    public double FinalTotal;
+    // Private fields
+    private int receiptNo;
+    private DateTime date;
+    private double finalTotal;
+
+    // Getters and Setters
+    public int ReceiptNo
+    {
+        get { return receiptNo; }
+        set { receiptNo = value; }
+    }
+
+    public DateTime Date
+    {
+        get { return date; }
+        set { date = value; }
+    }
+
+    public double FinalTotal
+    {
+        get { return finalTotal; }
+        set { finalTotal = value; }
+    }
 }
 
 class Program
@@ -29,22 +81,22 @@ class Program
     {
         Product[] products =
         {
-         
-    new Product { Id = 1, Name = "Spanish Latte", Category = "Drinks", Price = 120, RemainingStock = 10 },
-    new Product { Id = 2, Name = "Matcha Latte", Category = "Drinks", Price = 120, RemainingStock = 15 },
-    new Product { Id = 3, Name = "Ube Latte", Category = "Drinks", Price = 120, RemainingStock = 15 },
-    new Product { Id = 4, Name = "Tiramisu Cake", Category = "Dessert", Price = 150, RemainingStock = 8 },
-    new Product { Id = 5, Name = "Chocolate Chip Cookie", Category = "Dessert", Price = 30, RemainingStock = 30 },
-    new Product { Id = 6, Name = "Macaron", Category = "Dessert", Price = 30, RemainingStock = 40 },
-    new Product { Id = 7, Name = "Croissant", Category = "Dessert", Price = 50, RemainingStock = 35 },
-    new Product { Id = 8, Name = "Loaded Fries", Category = "Savory", Price = 70, RemainingStock = 30 },
-    new Product { Id = 9, Name = "Breakfast Sandwich", Category = "Savory", Price = 70, RemainingStock = 30 },
-    new Product { Id = 10, Name = "Lemonade", Category = "Drinks", Price = 70, RemainingStock = 20 },
-    new Product { Id = 11, Name = "Crème Brûlée", Category = "Dessert", Price = 70, RemainingStock = 15 },
-    new Product { Id = 12, Name = "Soufflé", Category = "Dessert", Price = 50, RemainingStock = 25 }
+            new Product { Id = 1, Name = "Spanish Latte", Category = "Drinks", Price = 120, RemainingStock = 10 },
+            new Product { Id = 2, Name = "Matcha Latte", Category = "Drinks", Price = 120, RemainingStock = 15 },
+            new Product { Id = 3, Name = "Ube Latte", Category = "Drinks", Price = 120, RemainingStock = 15 },
+            new Product { Id = 4, Name = "Tiramisu Cake", Category = "Dessert", Price = 150, RemainingStock = 8 },
+            new Product { Id = 5, Name = "Chocolate Chip Cookie", Category = "Dessert", Price = 30, RemainingStock = 30 },
+            new Product { Id = 6, Name = "Macaron", Category = "Dessert", Price = 30, RemainingStock = 40 },
+            new Product { Id = 7, Name = "Croissant", Category = "Dessert", Price = 50, RemainingStock = 35 },
+            new Product { Id = 8, Name = "Loaded Fries", Category = "Savory", Price = 70, RemainingStock = 30 },
+            new Product { Id = 9, Name = "Breakfast Sandwich", Category = "Savory", Price = 70, RemainingStock = 30 },
+            new Product { Id = 10, Name = "Lemonade", Category = "Drinks", Price = 70, RemainingStock = 20 },
+            new Product { Id = 11, Name = "Crème Brûlée", Category = "Dessert", Price = 70, RemainingStock = 15 },
+            new Product { Id = 12, Name = "Soufflé", Category = "Dessert", Price = 50, RemainingStock = 25 }
         };
 
         const int LIMIT = 10;
+
         Product[] cart = new Product[LIMIT];
         int[] qty = new int[LIMIT];
         int count = 0;
@@ -67,25 +119,33 @@ class Program
             switch (choice)
             {
                 case 1:
-                    foreach (var p in products) p.Display();
+                    foreach (var p in products)
+                        p.Display();
                     break;
 
                 case 2:
                     Console.Write("Search: ");
                     string search = Console.ReadLine().ToLower();
+
                     foreach (var p in products)
+                    {
                         if (p.Name.ToLower().Contains(search))
                             p.Display();
+                    }
                     break;
 
                 case 3:
                     Console.WriteLine("1. Drinks\n2. Dessert");
+
                     int catChoice = ReadInt("Choose category: ");
+
                     string category = catChoice == 1 ? "Drinks" : "Dessert";
 
                     foreach (var p in products)
+                    {
                         if (p.Category == category)
                             p.Display();
+                    }
                     break;
 
                 case 4:
@@ -94,9 +154,13 @@ class Program
 
                 case 5:
                     Console.WriteLine("\n=== ORDER HISTORY ===");
+
                     for (int i = 0; i < historyCount; i++)
                     {
-                        Console.WriteLine($"Receipt #{history[i].ReceiptNo:0000} | {history[i].Date:MMMM dd, yyyy hh:mm tt} | ₱{history[i].FinalTotal:F2}");
+                        Console.WriteLine(
+                            $"Receipt #{history[i].ReceiptNo:0000} | " +
+                            $"{history[i].Date:MMMM dd, yyyy hh:mm tt} | " +
+                            $"₱{history[i].FinalTotal:F2}");
                     }
                     break;
 
@@ -125,9 +189,17 @@ class Program
             switch (choice)
             {
                 case 1:
-                    foreach (var p in products) p.Display();
+                    foreach (var p in products)
+                        p.Display();
 
                     int id = ReadInt("Product #: ");
+
+                    if (id < 1 || id > products.Length)
+                    {
+                        Console.WriteLine("Invalid product number.");
+                        break;
+                    }
+
                     Product selected = products[id - 1];
 
                     if (selected.RemainingStock == 0)
@@ -137,6 +209,7 @@ class Program
                     }
 
                     int q = ReadInt("Quantity: ");
+
                     if (q > selected.RemainingStock)
                     {
                         Console.WriteLine("Not enough stock.");
@@ -146,7 +219,9 @@ class Program
                     int index = FindItem(cart, count, selected.Id);
 
                     if (index != -1)
+                    {
                         qty[index] += q;
+                    }
                     else
                     {
                         cart[count] = selected;
@@ -159,15 +234,38 @@ class Program
                     break;
 
                 case 2:
-                    for (int i = 0; i < count; i++)
-                        Console.WriteLine($"{i + 1}. {cart[i].Name} x{qty[i]}");
+                    if (count == 0)
+                    {
+                        Console.WriteLine("Cart is empty.");
+                    }
+                    else
+                    {
+                        for (int i = 0; i < count; i++)
+                        {
+                            Console.WriteLine($"{i + 1}. {cart[i].Name} x{qty[i]}");
+                        }
+                    }
                     break;
 
                 case 3:
+                    if (count == 0)
+                    {
+                        Console.WriteLine("Cart is empty.");
+                        break;
+                    }
+
                     int u = ReadInt("Item #: ") - 1;
 
+                    if (u < 0 || u >= count)
+                    {
+                        Console.WriteLine("Invalid item number.");
+                        break;
+                    }
+
                     int newQty = ReadInt("New quantity: ");
+
                     int oldQty = qty[u];
+
                     int diff = newQty - oldQty;
 
                     if (diff > 0 && diff > cart[u].RemainingStock)
@@ -177,11 +275,24 @@ class Program
                     }
 
                     cart[u].RemainingStock -= diff;
+
                     qty[u] = newQty;
                     break;
 
                 case 4:
+                    if (count == 0)
+                    {
+                        Console.WriteLine("Cart is empty.");
+                        break;
+                    }
+
                     int r = ReadInt("Remove item #: ") - 1;
+
+                    if (r < 0 || r >= count)
+                    {
+                        Console.WriteLine("Invalid item number.");
+                        break;
+                    }
 
                     cart[r].RemainingStock += qty[r];
 
@@ -190,19 +301,30 @@ class Program
                         cart[i] = cart[i + 1];
                         qty[i] = qty[i + 1];
                     }
+
                     count--;
                     break;
 
                 case 5:
                     for (int i = 0; i < count; i++)
+                    {
                         cart[i].RemainingStock += qty[i];
+                    }
 
                     count = 0;
+
                     Console.WriteLine("Cart cleared.");
                     break;
 
                 case 6:
+                    if (count == 0)
+                    {
+                        Console.WriteLine("Cart is empty.");
+                        break;
+                    }
+
                     double finalTotal;
+
                     Checkout(cart, qty, count, products, out finalTotal);
 
                     history[historyCount++] = new Order
@@ -227,14 +349,18 @@ class Program
         Console.WriteLine("\n=== RECEIPT ===");
 
         double total = 0;
+
         for (int i = 0; i < count; i++)
         {
             double sub = cart[i].Price * qty[i];
+
             Console.WriteLine($"{cart[i].Name} x{qty[i]} = ₱{sub:F2}");
+
             total += sub;
         }
 
         double discount = total >= 5000 ? total * 0.10 : 0;
+
         finalTotal = total - discount;
 
         Console.WriteLine($"Total: ₱{total:F2}");
@@ -242,11 +368,16 @@ class Program
         Console.WriteLine($"Final Total: ₱{finalTotal:F2}");
 
         double payment;
+
         while (true)
         {
             Console.Write("Payment: ");
-            if (double.TryParse(Console.ReadLine(), out payment) && payment >= finalTotal)
+
+            if (double.TryParse(Console.ReadLine(), out payment) &&
+                payment >= finalTotal)
+            {
                 break;
+            }
 
             Console.WriteLine("Invalid or insufficient payment.");
         }
@@ -262,11 +393,15 @@ class Program
     static int ReadInt(string message)
     {
         int value;
+
         while (true)
         {
             Console.Write(message);
+
             if (int.TryParse(Console.ReadLine(), out value))
+            {
                 return value;
+            }
 
             Console.WriteLine("Invalid input. Enter a number.");
         }
@@ -275,7 +410,12 @@ class Program
     static int FindItem(Product[] cart, int count, int id)
     {
         for (int i = 0; i < count; i++)
-            if (cart[i].Id == id) return i;
+        {
+            if (cart[i].Id == id)
+            {
+                return i;
+            }
+        }
 
         return -1;
     }
@@ -283,6 +423,7 @@ class Program
     static void ShowLowStock(Product[] products)
     {
         Console.WriteLine("\nLOW STOCK ALERT:");
+
         bool found = false;
 
         foreach (var p in products)
@@ -295,6 +436,8 @@ class Program
         }
 
         if (!found)
+        {
             Console.WriteLine("No low stock items.");
+        }
     }
 }
