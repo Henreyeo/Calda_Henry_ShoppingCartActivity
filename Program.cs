@@ -33,6 +33,7 @@ class Product
         get { return price; }
         set { price = value; }
     }
+}
 
     public int RemainingStock
     {
@@ -295,6 +296,7 @@ class Program
 
             total += sub;
         }
+    }
 
         double discount = total >= 5000 ? total * 0.10 : 0;
 
